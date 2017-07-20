@@ -1,0 +1,11 @@
+matrix:
+  include:
+    - language: ruby
+      rvm:
+        - 2.2
+      install: gem install s3_website
+
+    - language: python
+      python: 2.7
+      script:
+        - python deploy_script.py
