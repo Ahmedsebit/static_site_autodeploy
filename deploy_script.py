@@ -11,6 +11,7 @@ def deploy_static(git_repo, git_repo_name, git_branch):
     subprocess.call(['python', 'bin/build-index.py'])
     subprocess.call(['chmod', '755', './deploy.sh'])
     subprocess.call(['touch', '.env']) # prevents FileNotFound error
+    subprocess.call(['bundle', 'install'])
     subprocess.call(['./deploy.sh'])
 
 def travis_to_git():
