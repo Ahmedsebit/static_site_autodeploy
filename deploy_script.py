@@ -1,6 +1,8 @@
 import subprocess
 import os
 
+import json
+from collections import namedtuple
 
 def deploy_static(git_repo, git_repo_name, git_branch):
     subprocess.call(['git', 'clone', git_repo])
@@ -18,6 +20,15 @@ def travis_to_git():
     print 'pushing to git ..'
     subprocess.call(['chmod', '755', '../travis_git_commit.sh'])
     subprocess.call(['../travis_git_commit.sh'])
+
+def read_json(input_file):    
+    with open(input_file, 'r') as json_file:
+        data = json.load(json_file)
+        return data
+
+def write_json(index_obj, output_file):
+    with open(output_file, 'w') as output_file:
+        json.dump(index_obj, output_file)
 
 def get_new_no_of_items(filename):
     # opens the file safely
