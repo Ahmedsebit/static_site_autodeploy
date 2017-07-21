@@ -10,9 +10,14 @@ def deploy_static(git_repo, git_repo_name, git_branch):
     subprocess.call(['git', 'branch'])
     subprocess.call(['python', 'bin/build-index.py'])
     subprocess.call(['chmod', '755', './deploy.sh'])
-    subprocess.call(['touch', '.env'])  # prevents FileNotFound error
+    subprocess.call(['touch', '.env']) # prevents FileNotFound error
+    subprocess.call(['bundle', 'install'])
     subprocess.call(['./deploy.sh'])
 
+def travis_to_git():
+    print 'pushing to git ..'
+    subprocess.call(['chmod', '755', '../travis_git_commit.sh'])
+    subprocess.call(['../travis_git_commit.sh'])
 
 def get_new_no_of_items(filename):
     # opens the file safely
@@ -62,6 +67,8 @@ def main():
         git_branch = 'senegal'
         print 'deploying .......'
         deploy_static(git_repo, git_repo_name, git_branch)
+
+        travis_to_git()
     else:
         print'Nothing to see or do!'
 
