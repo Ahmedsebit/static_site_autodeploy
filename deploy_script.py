@@ -1,4 +1,3 @@
-
 import subprocess
 import os
 
@@ -12,7 +11,7 @@ def deploy_static(git_repo, git_repo_name, git_branch):
     subprocess.call(['python', 'bin/build-index.py'])
     subprocess.call(['chmod', '755', './deploy.sh'])
     subprocess.call(['touch', '.env']) # prevents FileNotFound error
-    # subprocess.call(['sudo', 'gem', 'install', 's3_website'])
+    subprocess.call(['bundle', 'install']) # prevents jekyll not found error
     subprocess.call(['./deploy.sh'])
 
 def main():
@@ -42,10 +41,10 @@ def main():
             print('writting to line_count.txt value: ', new_lines)
             f.write(str(new_lines))
         # deploy the static site 
-        git_repo = 'git@github.com:boswellgathu/OpenGazettes.git'
+        git_repo = 'https://github.com/boswellgathu/OpenGazettes.git'
         git_repo_name = 'OpenGazettes'
         git_branch = 'senegal'
-        print'deploying .......'
+        print 'deploying .......'
         deploy_static(git_repo, git_repo_name, git_branch)
     else:
         print'Nothing to see or do!'
@@ -53,4 +52,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-            
