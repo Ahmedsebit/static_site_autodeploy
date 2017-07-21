@@ -1,0 +1,10 @@
+language: python
+python:
+  - "2.7"
+before_script:
+  - rvm install 2.3.0
+  - bundle install
+  - gem install s3_website
+
+script:
+  - python deploy_script.py
