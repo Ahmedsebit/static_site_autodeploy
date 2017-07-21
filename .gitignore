@@ -99,3 +99,11 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# script files
+OpenGazettes/
+*.jsonlines
+
+# editor files
+.idea
+*.pub
