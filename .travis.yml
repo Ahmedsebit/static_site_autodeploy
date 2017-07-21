@@ -3,8 +3,8 @@ python:
   - "2.7"
 before_script:
   - rvm install 2.3.0
-  - bundle install
   - gem install s3_website
+  - bundle install
 
 script:
   - openssl aes-256-cbc -K $encrypted_024a67fab80c_key -iv $encrypted_024a67fab80c_iv -in deploy-key.enc -out deploy-key -d
