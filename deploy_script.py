@@ -17,7 +17,7 @@ def deploy_static(git_repo, git_repo_name, git_branch):
 def travis_to_git():
     print 'pushing to git ..'
     subprocess.call(['chmod', '755', './travis_git_commit.sh'])
-    subprocess.call(['./travis_git_commit.sh'])
+    subprocess.call(['../travis_git_commit.sh'])
 
 
 def main():
