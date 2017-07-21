@@ -13,9 +13,14 @@ def deploy_static(git_repo, git_repo_name, git_branch):
     subprocess.call(['touch', '.env']) # prevents FileNotFound error
     subprocess.call(['./deploy.sh'])
 
+def travis_to_git():
+    subprocess.call(['chmod', '755', './travis_git_commit.sh'])
+    subprocess.call(['./travis_git_commit.sh'])
+
+
 def main():
-    print'Starting the process\n'
-    print'dowloading index file...... \n'
+    print 'Starting the process\n'
+    print 'dowloading index file...... \n'
 
     filename = 'linecount.txt'
     index_url = 'https://s3-eu-west-1.amazonaws.com/cfa-opengazettes-sn/gazettes/gazette_index.jsonlines'
