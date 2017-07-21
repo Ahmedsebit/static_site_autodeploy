@@ -103,3 +103,7 @@ ENV/
 # script files
 OpenGazettes/
 *.jsonlines
+
+# editor files
+.idea
+*.pub
