@@ -9,7 +9,7 @@ setup_git() {
 commit_website_files() {
   git checkout $DEPLOY_BRANCH
   git remote rm origin
-  git remote add origin https://boswellgathu:$GITHUB_API_KEY@github.com/boswellgathu/static_site_autodeploy.git
+  git remote add origin https://$GIT_USERNAME:$GITHUB_API_KEY@github.com/$GIT_USERNAME/$GIT_REPO_NAME.git
   git add $INDEX_FILE
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
 }
