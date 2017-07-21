@@ -6,8 +6,4 @@ before_script:
   - gem install s3_website
 
 script:
-  - openssl aes-256-cbc -K $encrypted_024a67fab80c_key -iv $encrypted_024a67fab80c_iv -in deploy-key.enc -out deploy-key -d
-  - chmod 600 deploy-key
-  - eval `ssh-agent -s`
-  - ssh-add deploy-key
   - python deploy_script.py
