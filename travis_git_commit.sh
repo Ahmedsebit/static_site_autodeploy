@@ -13,6 +13,7 @@ commit_website_files() {
 }
 
 upload_files() {
+  echo Pushing changes... ${DEPLOY_BRANCH}
   git push origin $DEPLOY_BRANCH
 }
 
