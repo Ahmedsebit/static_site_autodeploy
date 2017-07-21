@@ -51,7 +51,6 @@ def get_old_no_of_items(filename):
 
 
 def modify_item_count(filename, new_lines):
-
     with open(filename, 'w') as file_object:
         print('writting to line_count.txt value: ', new_lines)
         file_object.write(str(new_lines))
@@ -61,17 +60,19 @@ def main():
     print 'Starting the process\n'
     print 'dowloading index file...... \n'
 
-    filename = 'linecount.txt'
+    filename = 'index.json'
     items_file = 'gazette_index.jsonlines'
     index_url = 'https://s3-eu-west-1.amazonaws.com/cfa-opengazettes-sn'\
-                'gazettes/gazette_index.jsonlines'
+                '/gazettes/gazette_index.jsonlines'
     subprocess.call(['curl', index_url, '-O'])
 
     new_lines = get_new_no_of_items(items_file)
-    line_count = get_old_no_of_items(filename)
+    local_data = read_json(filename)
+    line_count = local_data.get('senegal').get('current_lines')
 
     if line_count < new_lines:
-        modify_item_count(filename, new_lines)
+        local_data['senegal']['current_lines'] = new_lines
+        write_json(local_data, filename)
         # deploy the static site
         git_repo = 'https://github.com/boswellgathu/OpenGazettes.git'
         git_repo_name = 'OpenGazettes'
