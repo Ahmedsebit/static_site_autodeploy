@@ -1,6 +1,7 @@
-
 import subprocess
 
+import json
+from collections import namedtuple
 
 def deploy_static(git_repo, git_repo_name, git_branch):
     # subprocess.call(['git', 'clone', git_repo])
@@ -12,6 +13,17 @@ def deploy_static(git_repo, git_repo_name, git_branch):
     subprocess.call(['touch', '.env']) # prevents FileNotFound error
     subprocess.call(['sudo', 'gem', 'install', 's3_website'])
     subprocess.call(['./deploy.sh'])
+
+
+def read_json(input_file):    
+    with open(input_file, 'r') as json_file:
+        data = json.load(json_file)
+        return data
+
+def write_json(index_obj, output_file):
+    with open(output_file, 'w') as output_file:
+        json.dump(index_obj, output_file)
+
 
 def main():
     print('Starting de plocess, woloyeyayiiii!!')
