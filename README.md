@@ -9,3 +9,11 @@ Scripts to deploy jekyll
     * `GIT_REPO_NAME` - name of this Github Repo
     * `DEPLOY_BRANCH` - The branch from which the script is ran
     * `INDEX_FILE` - The file which is being pushed to github from Travis
+### Running the program
+- Clone the repo
+- Create a python enviroment
+- Install the requirements
+- Add the country to the enviroment
+    * export COUNTRY = 'country'
+- Run the python file
+   
