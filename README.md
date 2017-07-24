@@ -11,9 +11,38 @@ Scripts to deploy jekyll
     * `INDEX_FILE` - The file which is being pushed to github from Travis
 ### Running the program
 - Clone the repo
+  ```
+  git clone https://github.com/Ahmedsebit/static_site_autodeploy.git
+  
+  ```
 - Create a python enviroment
+
+  ```
+  virtualenv -p python3 env
+  
+  ```
+  
+- Activate the enviroment
+  ```
+  source env/bin/activate
+  
+  ```
+
 - Install the requirements
+  ```
+  pip install -r requirements.txt
+  
+  ```
+
 - Add the country to the enviroment
-    * export COUNTRY = 'country'
+  ```
+  export COUNTRY = 'country'
+  
+  ```
+
 - Run the python file
+  ```
+  python deploy_script.py
+  
+  ```
    
